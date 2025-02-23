@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro e Login</title>
+    <title>Cadastro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,12 +45,12 @@
         }
 
         .form-section {
-            background-color: #d4af37;
+            background-color: #1e3a5f;
             padding: 20px;
             border-radius: 10px;
             width: 350px;
             text-align: center;
-            color: black;
+            color: white;
             margin: 0 10px;
         }
 
@@ -63,7 +63,7 @@
             width: 100%;
             padding: 12px;
             margin-bottom: 12px;
-            border: 1px solid black;
+            border: 1px solid white;
             border-radius: 8px;
             font-size: 16px;
         }
@@ -91,6 +91,12 @@
             border-radius: 8px;
             display: none;
         }
+
+        .image-upload {
+            width: 350px;
+            text-align: center;
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -102,24 +108,19 @@
     </div>
 
     <div class="container">
+        <div class="image-upload">
+            <h2>Foto de Perfil</h2>
+            <input type="file" id="imagem" accept="image/*"><br>
+            <img id="image-preview" src="#" alt="Pré-visualização da Imagem">
+        </div>
+
         <div class="form-section">
             <h2>Cadastro</h2>
             <form id="signup-form">
                 <input type="text" id="nome" placeholder="Nome completo" required><br>
                 <input type="email" id="email" placeholder="Seu e-mail" required><br>
                 <input type="password" id="senha" placeholder="Senha" required><br>
-                <input type="file" id="imagem" accept="image/*"><br>
-                <img id="image-preview" src="#" alt="Pré-visualização da Imagem">
                 <button type="submit">Cadastrar</button>
-            </form>
-        </div>
-
-        <div class="form-section">
-            <h2>Login</h2>
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="Seu e-mail" required><br>
-                <input type="password" id="login-senha" placeholder="Senha" required><br>
-                <button type="submit">Entrar</button>
             </form>
         </div>
     </div>
@@ -141,11 +142,6 @@
         document.getElementById("signup-form").addEventListener("submit", function(event) {
             event.preventDefault();
             alert("Cadastro realizado com sucesso!");
-        });
-
-        document.getElementById("login-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Login realizado com sucesso!");
         });
     </script>
 </body>
