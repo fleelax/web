@@ -3,10 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleelax - Freelancers</title>
+    <title>Cadastro e Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #003366, #000000);
+            color: white;
+            overflow: hidden;
+        }
+
+        .navbar {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-section {
+            background-color: #d4af37;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+            color: black;
+            margin: 0 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid black;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        #image-preview {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bem-vindo ao Fleelax!</h1>
-    <p>Plataforma para freelancers oferecerem seus serviços.</p>
+    <div class="navbar">
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+        <a href="#">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="form-section">
+            <h2>Cadastro</h2>
+            <form id="signup-form">
+                <input type="text" id="nome" placeholder="Nome completo" required><br>
+                <input type="email" id="email" placeholder="Seu e-mail" required><br>
+                <input type="password" id="senha" placeholder="Senha" required><br>
+                <input type="file" id="imagem" accept="image/*"><br>
+                <img id="image-preview" src="#" alt="Pré-visualização da Imagem">
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>Login</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Seu e-mail" required><br>
+                <input type="password" id="login-senha" placeholder="Senha" required><br>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("imagem").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imagePreview = document.getElementById("image-preview");
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Cadastro realizado com sucesso!");
+        });
+
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Login realizado com sucesso!");
+        });
+    </script>
 </body>
 </html>
